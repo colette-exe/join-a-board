@@ -4,4 +4,40 @@
 
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     border-radius: 20px;
+
+    display: flex;;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    position: relative;
+    top: 130px;
+    color: rgb(144, 120, 118);
+
+    background-color: #ffffff;
+    padding: 7px 10px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: rgb(102, 40, 0);
+}
+
+#logo {
+    position: relative;
+    top: 70px;
+    max-width: 300px;
+}
+
+.button {
+    position: relative;
+    top: 140px;
+    padding: 8px 17px;
+
+    color: rgb(144, 120, 118);
+    background-color: rgb(253, 226, 201);
+    font-weight: bold;
+
+    border-radius: 10px;
+    border-color: rgb(124, 88, 54);
+    border-width: 1px;
 }
