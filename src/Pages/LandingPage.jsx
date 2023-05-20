@@ -12,15 +12,15 @@ export default function LandingPage() {
         if (inputValue === boardCode) {
             navigate('/join-a-board/home');
         } else {
-            alert("Incorrect Board Code!");
+            alert("Board doesn't exist!");
         }
     }
 
     return (
         <div className="body">
             <img id="logo" src={logo} />
-            <input placeholder="ENTER BOARD CODE" value={inputValue} onChange={(e) => setInputValue(e.target.value) }/>
-            <button className="button" onClick={() => checkInput()}>SUBMIT</button>
+            <input id="input-landpage" placeholder="ENTER BOARD CODE" value={inputValue} onChange={(e) => setInputValue(e.target.value) }/>
+            <button id="button-landpage" onClick={() => checkInput()}>SUBMIT</button>
         </div>
     );
 }

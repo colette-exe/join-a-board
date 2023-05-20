@@ -10,9 +10,23 @@
     align-items: center;
 }
 
-input {
+h3 {
+    color: rgb(126, 91, 59);
+    text-align: left;
+    line-height: 0%;
+}
+
+hr {
+    color: rgb(143, 109, 75);
+}
+
+#logo {
     position: relative;
-    top: 130px;
+    top: 70px;
+    max-width: 300px;
+}
+
+input {
     color: rgb(144, 120, 118);
 
     background-color: #ffffff;
@@ -22,15 +36,27 @@ input {
     border-color: rgb(102, 40, 0);
 }
 
-#logo {
+input#input-landpage {
     position: relative;
-    top: 70px;
-    max-width: 300px;
+    top: 130px;
+
+    color: rgb(144, 120, 118);
+
+    background-color: #ffffff;
+    padding: 7px 10px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: rgb(102, 40, 0);
 }
 
-.button {
+input#input-mainpage {
     position: relative;
-    top: 140px;
+    padding: 5px 10px;
+    border-radius: 50px;
+    font-size: 13px;
+}
+
+button {
     padding: 8px 17px;
 
     color: rgb(144, 120, 118);
@@ -40,4 +66,135 @@ input {
     border-radius: 10px;
     border-color: rgb(124, 88, 54);
     border-width: 1px;
+}
+
+button#button-landpage {
+    position: relative;
+    top: 140px;
+}
+
+IconButton#button-mainpage {
+    position: relative;
+}
+
+#banner {
+    position: relative;
+    top: 20px;
+    width: 80%;
+
+    display: inline-flex;
+}
+
+#home-body {
+    position: relative;
+    top: 70px;
+    width: 80%;
+    height: 75%;
+}
+
+#home-body div#boards, div#announcements {
+    margin-bottom: 70px;
+}
+
+div#boards div {
+    position: relative;
+    top: 5px;
+    display: flex;
+
+    padding-left: 20px;
+    max-width: 100px;
+    height: 100px;
+
+    align-items: center;
+    font-size: 13px;
+    font-weight: bold;
+    
+    background-color: rgb(185, 144, 142);
+    border-radius: 30px;
+}
+
+div#announcements div {
+    position: relative;
+    top: 5px;
+    display: flex;
+    
+    padding-left: 10px;
+    max-width: 100%;
+    height: 60px;
+
+    align-items: center;
+    font-size: 13px;
+    font-weight: bold;
+    
+    background-color: rgb(185, 144, 142);
+    border-radius: 20px;
+}
+
+div#board-1234 {
+    padding: 10px;
+    width: 200px;
+}
+
+div#board-1234 h3 {
+    margin-left: 10px;
+    color: black;
+}
+
+div#announcement-body div#announcement-1234 {
+    margin-top: 30px;
+    width: 250px;
+    height: 400px;
+    padding: 10px;
+
+    border-radius: 20px;
+
+    box-shadow: rgb(148, 103, 101) 0px 1px 4px, rgb(185, 144, 142) 0px 0px 0px 3px;
+
+    font-size: 16px;
+    font-weight: bold;
+    overflow: scroll;
+    text-align: justify;
+}
+
+button#green {
+    margin-left: 5%;
+    width: 70px;
+    height: 40px;
+
+    background-color: rgb(102, 242, 79);
+    border-color: rgb(62, 130, 58);
+    border-width: 1px;
+    border-radius: 20px;
+    border-style: solid;
+}
+
+button#red {
+    margin-left: 5%;
+    width: 70px;
+    height: 40px;
+
+    background-color: rgb(236, 134, 134);
+    border-color: rgb(166, 92, 88);
+    border-width: 1px;
+    border-radius: 20px;
+    border-style: solid;
+}
+
+button#blue {
+    margin-left: 5%;
+    width: 70px;
+    height: 40px;
+
+    background-color: rgb(147, 218, 234);
+    border-color: rgb(34, 93, 130);
+    border-width: 1px;
+    border-radius: 20px;
+    border-style: solid;
+}
+
+div#board-body {
+    position: relative;
+    top: 50px;
+    width: 80%;
+    height: 75%;
 }
