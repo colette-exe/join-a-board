@@ -12,8 +12,32 @@ export default function AnnouncementPage() {
         navigate("/join-a-board/home");
     }
 
+    const generateTextFile = () => {
+        const info = { name: localStorage.getItem("name"), time: localStorage.getItem("response-date") };
+        const fileData = JSON.stringify(info);
+        const blob = new Blob([fileData], { type: "text/plain" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.download = "join-a-board-info.md";
+        link.href = url;
+        link.click();
+    }
+
     const clickBtn = () => {
         console.log("button clicked");
+        // stop timer
+        clearTimeout(localStorage.getItem("timer"));
+        localStorage.removeItem("timer");
+
+        // store date
+        localStorage.setItem("response-date", new Date());
+
+        // download text file
+        generateTextFile();
+
+        // remove local storage items
+        localStorage.removeItem("response-date");
+        localStorage.removeItem("name");
     }
 
     return (
@@ -42,9 +66,9 @@ export default function AnnouncementPage() {
                         Thank you so much for participating in this prototype test :{">"}
                         <br /><br/>
                     </p>
-                    <button id="green" onClick={clickBtn}></button>
-                    <button id="red" onClick={clickBtn}></button>
-                    <button id="blue" onClick={clickBtn}></button>
+                    <button id="green" onClick={clickBtn}>CLICK ME</button>
+                    <button id="red" onClick={clickBtn}>CLICK ME</button>
+                    <button id="blue" onClick={clickBtn}>CLICK ME</button>
                 </div>
             </div>
         </div>
