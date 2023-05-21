@@ -47,32 +47,31 @@ export default function Mainpage() {
             }, 5000); // 5 seconds
         }
     }
-
     return (
-        <div className="body">
-            <div id="banner">
-                <IconButton><MenuIcon /></IconButton>
-                <input id="input-mainpage" placeholder="ENTER BOARD CODE" value={inputValue} onChange={(e) => setInputValue(e.target.value) }/>
-                <IconButton id="button-mainpage" onClick={() => checkInput()}><SearchIcon /></IconButton>
-                <IconButton><AccountCircleOutlinedIcon/></IconButton>
-            </div>
-            <div id="home-body">
-            {(searchResult === false) ?
-                <h2>BOARD NOT FOUND!</h2> :
-                    <>
-                        <h3>YOUR BOARDS</h3>
-                        <hr/>
-                    <div id='boards'>
-                        <div id='board-1234' onClick={clickBoard}>BOARD 1234</div>
-                    </div>
-                        <h3>ANNOUNCEMENTS</h3>
-                        <hr/>
-                    <div id='announcements'>
-                    <div id='announcement-1234' onClick={clickAnnouncement}>WELCOME! ^o^ CLICK ME!</div>
-                    </div>
-                </>
-                }
-            </div>
+    <div className="body">
+        <div id="banner">
+            <IconButton><MenuIcon /></IconButton>
+            <input id="input-mainpage" placeholder="ENTER BOARD CODE" value={inputValue} onChange={(e) => setInputValue(e.target.value) }/>
+            <IconButton id="button-mainpage" onClick={() => checkInput()}><SearchIcon /></IconButton>
+            <IconButton><AccountCircleOutlinedIcon/></IconButton>
         </div>
+        <div id="home-body">
+        {(searchResult === false) ?
+            <h2>BOARD NOT FOUND!</h2> :
+                <>
+                    <h3>YOUR BOARDS</h3>
+                    <hr/>
+                <div id='boards'>
+                    <div id='board-1234' onClick={clickBoard}>BOARD 1234</div>
+                </div>
+                    <h3>ANNOUNCEMENTS</h3>
+                    <hr/>
+                <div id='announcements'>
+                    <div id='announcement-1234' onClick={clickAnnouncement}>WELCOME! ^o^ CLICK ME!</div>
+                </div>
+                </>
+            }
+        </div>
+    </div>
     );
 }

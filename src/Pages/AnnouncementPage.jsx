@@ -12,6 +12,7 @@ export default function AnnouncementPage() {
         navigate("/join-a-board/home");
     }
 
+    // reference: https://spin.atomicobject.com/2022/03/09/create-export-react-frontend/
     const generateTextFile = () => {
         const info = { name: localStorage.getItem("name"), time: localStorage.getItem("response-date") };
         const fileData = JSON.stringify(info);
@@ -38,6 +39,9 @@ export default function AnnouncementPage() {
         // remove local storage items
         localStorage.removeItem("response-date");
         localStorage.removeItem("name");
+
+        localStorage.setItem("responded", true);
+        navigate("/join-a-board/home");
     }
 
     return (
@@ -62,6 +66,8 @@ export default function AnnouncementPage() {
                         <br /><br/>
                         These are just colorful buttons. Pick a color and click to be able to respond to this announcement or mark it as read!!
                         It is very important that you do this ok! Click click click!! 
+                        <br /><br />
+                        After clicking a button, a file will be downloaded. This just contains the time you clicked the button and the name you entered. Send the file downloaded to me!
                         <br /><br />
                         Thank you so much for participating in this prototype test :{">"}
                         <br /><br/>
