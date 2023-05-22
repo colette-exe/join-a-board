@@ -40,7 +40,7 @@ export default function AnnouncementPage() {
         localStorage.removeItem("response-date");
         localStorage.removeItem("name");
 
-        localStorage.setItem("responded", true);
+        localStorage.setItem("responded", "true");
         navigate("/join-a-board/home");
     }
 
@@ -72,9 +72,14 @@ export default function AnnouncementPage() {
                         Thank you so much for participating in this prototype test :{">"}
                         <br /><br/>
                     </p>
-                    <button id="green" onClick={clickBtn}>CLICK ME</button>
-                    <button id="red" onClick={clickBtn}>CLICK ME</button>
-                    <button id="blue" onClick={clickBtn}>CLICK ME</button>
+                    {(localStorage.getItem("responded") === "true") ?
+                        <p></p>:
+                        <>
+                        <button id="green" onClick={clickBtn}>CLICK ME</button>
+                        <button id="red" onClick={clickBtn}>CLICK ME</button>
+                        <button id="blue" onClick={clickBtn}>CLICK ME</button>
+                        </>}
+                    
                 </div>
             </div>
         </div>

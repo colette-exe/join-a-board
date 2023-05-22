@@ -67,7 +67,7 @@ export default function Mainpage() {
                     <h3>ANNOUNCEMENTS</h3>
                     <hr/>
                 <div id='announcements'>
-                    <div id='announcement-1234' onClick={clickAnnouncement}>WELCOME! ^o^ CLICK ME!</div>
+                    {(localStorage.getItem("responded")==="true")?<p></p>:<div id='announcement-1234' onClick={clickAnnouncement}>WELCOME! ^o^ CLICK ME!</div>}
                 </div>
                 </>
             }

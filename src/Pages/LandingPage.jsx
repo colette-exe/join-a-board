@@ -43,7 +43,7 @@ export default function LandingPage() {
             // interval
             var int = updateInterval();
             var timer;
-            localStorage.setItem("responded", false);
+            localStorage.setItem("responded", "false");
 
             // post notification
             Notification.requestPermission().then(perm => {
