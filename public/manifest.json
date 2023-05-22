@@ -3,12 +3,12 @@
     "short_name": "Join A Board",
     "icons": [
         {
-            "src" : "/logo-nameless.png",
+            "src" : "./logo-nameless.png",
             "sizes": "740x740",
             "type" : "image/png"
         },
         {
-            "src" : "/logo.png",
+            "src" : "./logo.png",
             "sizes": "946x632",
             "type" : "image/png"
         }
