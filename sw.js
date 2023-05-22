@@ -1,2 +1,58 @@
-if(!self.define){let e,s={};const c=(c,r)=>(c=new URL(c+".js",r).href,s[c]||new Promise((s=>{if("document"in self){const e=document.createElement("script");e.src=c,e.onload=s,document.head.appendChild(e)}else e=c,importScripts(c),s()})).then((()=>{let e=s[c];if(!e)throw new Error(`Module ${c} didn’t register its module`);return e})));self.define=(r,i)=>{const f=e||("document"in self?document.currentScript.src:"")||location.href;if(s[f])return;let n={};const a=e=>c(e,f),d={module:{uri:f},exports:n,require:a};s[f]=Promise.all(r.map((e=>d[e]||a(e)))).then((e=>(i(...e),n)))}}define(["./workbox-fdb6eb46"],(function(e){"use strict";self.addEventListener("message",(e=>{e.data&&"SKIP_WAITING"===e.data.type&&self.skipWaiting()})),e.precacheAndRoute([{url:"index.html",revision:"97ae5cfbaef47a58dded53eb094f1759"},{url:"manifest.json",revision:"f66e61c5568904c39c2bf9a5b80f1650"},{url:"package-lock.json",revision:"f80846c6b9ef5d836bb3fc4bf7786f28"},{url:"package.json",revision:"ea462ca2bddc841224006f5b1e4827ac"},{url:"public/boop.mp3",revision:"ab1f8486fc37f5b6633c554c13095edc"},{url:"public/logo-nameless.png",revision:"4a6e28da2e8f8ffa459d399c44177819"},{url:"public/menu.svg",revision:"71457a6b186d91667515cef056c27e68"},{url:"public/search.svg",revision:"1721f42ba7fa22af4cfdf22acd323f28"},{url:"public/vite.svg",revision:"8e3a10e157f75ada21ab742c022d5430"},{url:"README.md",revision:"5564e1dc9d907617de52a226e83587be"},{url:"src/App.css",revision:"d71db193775a4e487d0d60eed435c8f3"},{url:"src/App.jsx",revision:"00a02cc9c52a1568665b17254970181a"},{url:"src/assets/logo.png",revision:"8f9df1409d87457f522a35b94d0c657b"},{url:"src/assets/react.svg",revision:"f0402b67b6ce880f65666bb49e841696"},{url:"src/index.css",revision:"422757fcef5ea83ee30461edd3dd88e2"},{url:"src/main.jsx",revision:"54a301507dcdfccf4e5565754374b5dc"},{url:"src/Pages/AnnouncementPage.jsx",revision:"b8918d8146db8ef6040fbc528acc825f"},{url:"src/Pages/BoardPage.jsx",revision:"4971151d812febb5cb14a3ad5f7517c2"},{url:"src/Pages/LandingPage.jsx",revision:"3d9816b637e3874d3175f421cf3cbef8"},{url:"src/Pages/Mainpage.jsx",revision:"d3e7ce120863cf4cfb15bd6c9476ad17"},{url:"src/Pages/Page.css",revision:"a706f3ec84378701389730e413bb39e2"},{url:"vite.config.js",revision:"5297c9a22419929795b8f7f0ad1b0b00"},{url:"workbox-config.cjs",revision:"5e2382d597659087401e1efd520bc7d2"}],{ignoreURLParametersMatching:[/^utm_/,/^fbclid$/]})}));
-//# sourceMappingURL=sw.js.map
+var APP_PREFIX = 'ApplicationName_'     // Identifier for this app (this needs to be consistent across every cache update)
+var VERSION = 'version_01'              // Version of the off-line cache (change this value everytime you want to update cache)
+var CACHE_NAME = APP_PREFIX + VERSION
+var URLS = [                            // Add URL you want to cache in this list.
+  '/{repository}/',                     // If you have separate JS/CSS files,
+  '/{repository}/index.html'            // add path to those files here
+]
+
+// Respond with cached resources
+self.addEventListener('fetch', function (e) {
+  console.log('fetch request : ' + e.request.url)
+  e.respondWith(
+    caches.match(e.request).then(function (request) {
+      if (request) { // if cache is available, respond with cache
+        console.log('responding with cache : ' + e.request.url)
+        return request
+      } else {       // if there are no cache, try fetching request
+        console.log('file is not cached, fetching : ' + e.request.url)
+        return fetch(e.request)
+      }
+
+      // You can omit if/else for console.log & put one line below like this too.
+      // return request || fetch(e.request)
+    })
+  )
+})
+
+// Cache resources
+self.addEventListener('install', function (e) {
+  e.waitUntil(
+    caches.open(CACHE_NAME).then(function (cache) {
+      console.log('installing cache : ' + CACHE_NAME)
+      return cache.addAll(URLS)
+    })
+  )
+})
+
+// Delete outdated caches
+self.addEventListener('activate', function (e) {
+  e.waitUntil(
+    caches.keys().then(function (keyList) {
+      // `keyList` contains all cache names under your username.github.io
+      // filter out ones that has this app prefix to create white list
+      var cacheWhitelist = keyList.filter(function (key) {
+        return key.indexOf(APP_PREFIX)
+      })
+      // add current cache name to white list
+      cacheWhitelist.push(CACHE_NAME)
+
+      return Promise.all(keyList.map(function (key, i) {
+        if (cacheWhitelist.indexOf(key) === -1) {
+          console.log('deleting cache : ' + keyList[i] )
+          return caches.delete(keyList[i])
+        }
+      }))
+    })
+  )
+})
