@@ -15,7 +15,7 @@
     ],
     "theme_color": "#FFFFFF",
     "background_color": "#FFFFFF",
-    "start_url": "https://colette-exe.github.io/join-a-board/",
+    "start_url": "/join-a-board/",
     "display": "standalone",
     "orientation": "portrait"
 }
