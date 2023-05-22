@@ -8,8 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join A Board</title>
     <script>
-      if (navigator.serviceWorker) {
-    navigator.serviceWorker.register('/join-a-board/sw.js', {scope: '/join-a-board/'})
+      if ('serviceWorker' in navigator && 'PushManager' in window) {
+    navigator.serviceWorker.register('/join-a-board/sw.js', {scope: '/join-a-board/'}).then(ServiceWorkerRegistration => {
+      console.info('Service worker was registered.');
+      console.info({ServiceWorkerRegistration});
+    })
   }
     </script>
   </head>

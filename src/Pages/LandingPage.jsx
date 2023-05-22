@@ -46,12 +46,12 @@ export default function LandingPage() {
             localStorage.setItem("responded", "false");
 
             // post notification
-            Notification.requestPermission().then(perm => {
+            Notification.requestPermission().then(async perm => {
                 if (perm === "granted") {
                     // notify again after some time
                     function postNotif() {
                         new Notification("Don't forget to respond!", {
-                            body: "You have an unread announcement!\n\nOn the announcments section, click on the announcement and press 'VIEW'.\nRespond to the announcement by clicking any button!!\n\nThis is very important so don't forget!\n", // more info
+                            body: "You have an unread announcement!\n\nOn the ANNOUNCEMENTS section, click on the announcement and press 'VIEW'.\nRespond to the announcement by clicking any button!!\n\nThis is very important so don't forget!\n", // more info
                             icon: "logo-nameless.png",
                             silent: false,
                             vibrate: true,
