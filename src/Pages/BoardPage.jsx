@@ -20,13 +20,13 @@ export default function BoardPage() {
     const clickAnnouncement = () => {
         if (clicked === false) {
             setClicked(true);
-            var view = document.createElement("button");
+            let view = document.createElement("button");
             view.innerHTML = "VIEW";
             view.onclick = viewAnnouncement;
             view.style.position = "relative";
             view.style.top = "20px";
 
-            var div = document.getElementById('announcement-1234');
+            let div = document.getElementById('announcement-1234');
             div.style.height = '100px';
             div.style.transitionDuration = '200ms';
             div.appendChild(view);
