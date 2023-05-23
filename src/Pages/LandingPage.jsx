@@ -6,6 +6,9 @@ import './Page.css';
 export default function LandingPage() {
     let navigate = useNavigate();
 
+    // import audio
+    const audio = new Audio("./boop.mp3");
+
     // for board code inputs
     const [inputValue, setInputValue] = useState("");
     const [name, setName] = useState("");
@@ -41,8 +44,8 @@ export default function LandingPage() {
     const checkInput = () => {
         if (inputValue === boardCode && name !== "") {
             // interval
-            var int = updateInterval();
-            var timer;
+            let int = updateInterval();
+            let timer;
             localStorage.setItem("responded", "false");
 
             // post notification
@@ -58,9 +61,20 @@ export default function LandingPage() {
                             tag: "Respond",
                         })
                         console.log(int);
+                        // play audio
+                        const audioPromise = audio.play();
+                        if (audioPromise !== undefined) {
+                            audioPromise
+                                .then(() => {
+                                    console.log("WORKS!");
+                                })
+                                .catch((err) => {
+                                    console.info(err);
+                                });
+                        }
+
                         // change interval
-                        // updateInt(20000);
-                        int = int-2000;
+                        int = updateInterval();
                         timer = setTimeout(postNotif, int);
                         localStorage.setItem("timer", timer);
                     }
