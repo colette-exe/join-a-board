@@ -12,7 +12,6 @@ export default function AnnouncementPage() {
         navigate("/join-a-board/home");
     }
 
-    // reference: https://spin.atomicobject.com/2022/03/09/create-export-react-frontend/
     const generateTextFile = () => {
         const info = { name: localStorage.getItem("name"), time: localStorage.getItem("response-date") };
         const fileData = JSON.stringify(info);
